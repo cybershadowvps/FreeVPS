@@ -1,0 +1,23 @@
+name: MTA:SA VPS Server
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: sudo apt-get update
+
+      - name: Install MTA:SA server
+        run: sudo bash mta-sa-install.sh
+
+      - name: Keep workflow alive
+        run: sleep 6h

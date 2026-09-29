@@ -162,6 +162,44 @@ Secrets Name | Uses | Notes
 :warning: Dont install big sur updates on your macos virtual machine, it will break your remote process!
 <img src="https://raw.githubusercontent.com/RealKoolisw/image/main/VirtualMachine-GHAction/sceenshots/Screenshot%202021-02-23%20at%207.35.57%20AM.png">
 
+## Open Game Panel (OGP)
+
+To install Open Game Panel on a Ubuntu/Debian VPS, run the ready-made installer in this repo:
+
+```bash
+sudo bash ogp-install.sh
+```
+
+After installation:
+
+1. Open the server IP on the OGP web port.
+2. Complete the first-time admin setup.
+3. Add your game servers via the panel.
+4. If your cloud firewall blocks traffic, allow the OGP web port and any game ports you plan to use.
+
+> Note: OGP depends on the upstream installer and may require a few minutes to download and configure the panel.
+
+## MTA:SA Server Setup
+
+If you want to run an MTA:SA game server on a Linux VPS, use the included installer:
+
+```bash
+sudo bash mta-sa-install.sh
+```
+
+After the install finishes:
+
+1. Open the required game ports on your VPS firewall.
+2. Configure your MTA server files in `/srv/mta/mods/deathmatch/`.
+3. Restart the service if needed:
+
+```bash
+sudo systemctl restart mta-sa
+sudo systemctl status mta-sa
+```
+
+> This is intended for a real Ubuntu/Debian VPS. GitHub Actions is only suitable for temporary remote access and does not provide a stable long-term game server environment.
+
 ## Updating Codes
 <details>
     <summary>Click Here to Expand</summary>

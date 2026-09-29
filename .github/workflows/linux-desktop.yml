@@ -1,0 +1,28 @@
+name: Ubuntu Desktop Virtual Machine
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Linux System Build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Ubuntu Desktop VPS
+        run: bash linux-desktop.sh
+        env:
+          LINUX_USER_PASSWORD: ${{ secrets.LINUX_USER_PASSWORD }}
+          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+          CHROME_HEADLESS_CODE: ${{ secrets.CHROME_HEADLESS_CODE }}
+          LINUX_MACHINE_NAME: ${{ secrets.LINUX_MACHINE_NAME }}
+          LINUX_USERNAME: ${{ secrets.LINUX_USERNAME }}
+          GOOGLE_REMOTE_PIN: ${{ secrets.GOOGLE_REMOTE_PIN }}
+
+      - name: Keep workflow alive
+        run: sleep 6h
